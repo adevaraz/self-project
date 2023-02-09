@@ -9,13 +9,13 @@
     "lint": "eslint ./src",
     "migrate": "node-pg-migrate"
   },
-  "author": "",
+  "author": "adevaraz",
   "license": "ISC",
   "dependencies": {
     "@hapi/hapi": "^21.2.1",
     "dotenv": "^16.0.3",
     "joi": "^17.7.0",
-    "nanoid": "^4.0.1",
+    "nanoid": "^3.1.20",
     "node-pg-migrate": "^6.2.2",
     "pg": "^8.9.0"
   },
