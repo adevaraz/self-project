@@ -32,7 +32,7 @@ class SongsService {
 
   async getSongs(albumId, filter) {
     const query = {
-      text: 'SELECT * FROM songs',
+      text: 'SELECT id, title, performer FROM songs',
       values: [],
     };
 
@@ -55,7 +55,7 @@ class SongsService {
 
     const result = await this._pool.query(query);
 
-    return result.rows.map((row) => ({ id: row.id, title: row.title, performer: row.performer }));
+    return result.rows;
   }
 
   async getSongById(id) {
