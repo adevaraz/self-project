@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-extraneous-dependencies */
 require('dotenv').config();
 const Hapi = require('@hapi/hapi');
@@ -44,6 +45,11 @@ const CollaborationsValidator = require('./validator/collaborations');
 // playlist_song_activites
 const playlistSongActivities = require('./api/playlistSongActivities');
 const PlaylistSongActivitiesService = require('./services/PlaylistSongActivitiesService');
+
+// exports
+const _exports = require('./api/exports');
+const ProducerService = require('./services/ProducerService');
+const ExportsValidator = require('./validator/exports');
 
 const init = async () => {
   const albumsService = new AlbumsService();
@@ -151,6 +157,13 @@ const init = async () => {
       options: {
         playlistsService,
         playlistSongActivitiesService,
+      },
+    },
+    {
+      plugin: _exports,
+      options: {
+        service: ProducerService,
+        validator: ExportsValidator,
       },
     },
   ]);
