@@ -59,7 +59,7 @@ class AlbumsHandler {
     this._validator.validateAlbumPayload(request.payload);
     const { id } = request.params;
 
-    await this._service.editAlbumById(id, request.payload);
+    await this._service.editAlbumById(id, { ...request.payload, coverUrl: null });
 
     return {
       status: 'success',

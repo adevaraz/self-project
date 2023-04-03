@@ -47,11 +47,11 @@ class AlbumsService {
     return result.rows.map(mapAlbumsDBToModel)[0];
   }
 
-  async editAlbumById(id, { name, year }) {
+  async editAlbumById(id, { name, year, coverUrl }) {
     const updatedAt = new Date().toISOString();
     const query = {
-      text: 'UPDATE albums SET name = $1, year = $2, updated_at = $3 WHERE id = $4 RETURNING id',
-      values: [name, year, updatedAt, id],
+      text: 'UPDATE albums SET name = $1, year = $2, cover_url = $3, updated_at = $4 WHERE id = $5 RETURNING id',
+      values: [name, year, coverUrl, updatedAt, id],
     };
 
     const result = await this._pool.query(query);
